@@ -11,7 +11,40 @@
     <noscript>
       <strong>We're sorry but vue-learn doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
+    <div id="app">
+      {{ message0}}
+      {{ message1 }}
+    </div>
     <!-- built files will be auto injected -->
   </body>
+  <script src="https://unpkg.com/vue"></script>
+  <script>
+    debugger
+    var vm  = new Vue({
+      el: '#app',
+      props: {
+        src: {
+          type: Array,
+          default: () => [],
+        }
+      },
+      propsData: {
+        message0: '123',
+      },
+      data: {
+        message1: 'Hello Vue!'
+      },
+      beforeCreate () {
+        console.log('beforeCreate');
+      },
+      methods: {
+        oneMethod() {
+          console.log('one method');
+        }
+      },
+    })
+    setTimeout(function() {
+      vm.message1 = "Hello Vue2";
+    }, 2000);
+  </script>
 </html>
